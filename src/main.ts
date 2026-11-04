@@ -1,24 +1,20 @@
-import './style.css';
-import { createInitialState, update } from './game.ts';
-import { render } from './render.ts';
-
-const canvas = document.getElementById('game');
-if (!(canvas instanceof HTMLCanvasElement)) {
-  throw new Error('Missing <canvas id="game"> element');
+// src/main.ts
+// Stub functions for start and restart
+function startGame() {
+  console.log('Start game clicked');
+  // Hide title overlay and show canvas focus state
+  document.getElementById('startBtn').style.display = 'none';
+  document.getElementById('gameCanvas').style.display = 'block';
 }
 
-const maybeCtx = canvas.getContext('2d');
-if (maybeCtx === null) {
-  throw new Error('2D canvas context unavailable');
-}
-const ctx: CanvasRenderingContext2D = maybeCtx;
-
-let state = createInitialState();
-
-function frame(): void {
-  state = update(state);
-  render(ctx, state);
-  requestAnimationFrame(frame);
+function restartGame() {
+  console.log('Restart game clicked');
+  // Hide game over overlay and reset state
+  document.getElementById('gameOverOverlay').classList.add('hidden');
+  document.getElementById('score').textContent = '0';
+  document.getElementById('finalScore').textContent = '0';
 }
 
-requestAnimationFrame(frame);
+// Wire buttons to functions
+document.getElementById('startBtn').addEventListener('click', startGame);
+document.getElementById('restartBtn').addEventListener('click', restartGame);
