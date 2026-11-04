@@ -1,24 +1,31 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Lava Snake</title>
-  </head>
-  <body>
-    <div id="app" class="min-h-screen bg-stone-950 text-orange-100 flex flex-col items-center justify-center gap-4 p-4">
-      <header class="text-center">
-        <h1 class="text-3xl font-bold tracking-wide text-orange-400">Lava Snake</h1>
-        <p class="text-sm text-stone-400">Skeleton scaffold — game code lands in milestone 1.</p>
-      </header>
-      <canvas
-        id="game"
-        width="400"
-        height="400"
-        class="rounded-lg border border-orange-800 bg-stone-900 shadow-lg shadow-orange-950"
-      ></canvas>
-      <p class="text-xs text-stone-500">Canvas ready. Snake rules, art, sound, and controls coming soon.</p>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lava Snake</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="flex flex-col items-center justify-center min-h-screen bg-gray-900 text-white">
+  <div class="absolute top-4 left-4 text-xl">Lava Snake</div>
+  <div class="relative w-full max-w-md">
+    <div class="absolute inset-0 flex items-center justify-center">
+      <div class="relative w-full">
+        <canvas id="gameCanvas" class="border-4 border-red-600 bg-gray-800"></canvas>
+        <div class="absolute bottom-0 left-0 right-0 bg-gray-800 p-2 text-center">
+          <div class="text-sm">Score: <span id="score">0</span> | Best: <span id="best">0</span></div>
+        </div>
+      </div>
     </div>
-    <script type="module" src="/src/main.ts"></script>
-  </body>
+    <button id="startBtn" class="mt-4 px-4 py-2 bg-yellow-500 hover:bg-yellow-600 rounded">Start Game</button>
+    <div id="gameOverOverlay" class="absolute inset-0 flex items-center justify-center hidden">
+      <div class="bg-gray-800 p-6 rounded-lg text-center">
+        <h2 class="text-xl mb-4">Game Over</h2>
+        <p class="mb-4">Final Score: <span id="finalScore">0</span></p>
+        <button id="restartBtn" class="px-4 py-2 bg-yellow-500 hover:bg-yellow-600 rounded">Restart</button>
+      </div>
+    </div>
+  </div>
+  <script src="src/main.js"></script>
+</body>
 </html>
